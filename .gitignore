@@ -1,0 +1,13 @@
+# binaries
+hotrace
+a.out
+# object files
+*.o
+# assembly files
+*.s
+# vim
+*.swp
+# mac / nfs
+*.nfs*
+.DS_Store
+._*

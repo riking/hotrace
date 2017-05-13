@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 14:27:54 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 10:15:07 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 10:21:30 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ int			ft_ary_grow(t_array *ary, size_t min_item_cap)
 	if (!newptr)
 		return (FT_ARY_ERR_ALLOC);
 	if (ary->ptr)
-		ft_memcpy(newptr, ary->ptr, ary->item_size * ary->item_count);
+		sse_memmove(newptr, ary->ptr, ary->item_size * ary->item_count);
 	free(ary->ptr);
-	ft_bzero(((char*)newptr) + (ary->item_size * ary->item_count),
+	sse_bzero(((char*)newptr) + (ary->item_size * ary->item_count),
 			ary->item_size * (min_item_cap - ary->item_count));
 	ary->ptr = newptr;
 	ary->item_cap = min_item_cap;

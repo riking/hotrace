@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 14:47:04 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 10:15:11 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 10:22:09 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ int		ft_ary_insert(t_array *ary, void *item, size_t idx)
 		if (status != 0)
 			return (status);
 	}
-	ft_memmove(((char*)ary->ptr) + ((idx + 1) * ary->item_size),
+	sse_memmove(((char*)ary->ptr) + ((idx + 1) * ary->item_size),
 			((char*)ary->ptr) + (idx * ary->item_size),
 			(ary->item_count - idx) * ary->item_size);
-	ft_memcpy(((char*)ary->ptr) + (idx * ary->item_size),
+	sse_memmove(((char*)ary->ptr) + (idx * ary->item_size),
 			item,
 			ary->item_size);
 	ary->item_count += 1;

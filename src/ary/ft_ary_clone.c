@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/27 21:13:59 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 10:14:21 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 10:22:44 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ t_array		ft_ary_clone(t_array ary, size_t min_size)
 	ptr = ft_memalloc(ary.item_size * min_size);
 	if (!ptr)
 		return (FT_ARY_NULL);
-	ft_memcpy(ptr, ary.ptr, ary.item_size * ary.item_count);
+	sse_memmove(ptr, ary.ptr, ary.item_size * ary.item_count);
 	return ((t_array){ptr, ary.item_size, ary.item_count, min_size});
 }

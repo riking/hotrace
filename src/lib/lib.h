@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 10:17:22 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 11:04:02 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 11:35:45 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 # include <sys/types.h>
 
 void		*ft_memalloc(size_t size);
+int			get_next_line0(char **line);
 
 #endif

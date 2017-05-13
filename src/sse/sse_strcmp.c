@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm_strequ.c                                       :+:      :+:    :+:   */
+/*   sse_strcmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 12:48:16 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 12:58:56 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 13:01:51 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str.h"
+#ifdef TEST
+# include <stdio.h>
+#endif
 
-int		asm_strcmp(const char *s1, const char *s2)
+int		sse_strcmp(const char *s1, const char *s2)
 {
 	int	result;
 	size_t idx;
@@ -38,15 +41,15 @@ int		asm_strcmp(const char *s1, const char *s2)
 }
 
 #ifdef TEST
-# include <stdio.h>
 
 int main(void)
 {
-	printf("%d\n", asm_strequ("aaaa", "aaaa"));
-	printf("%d\n", asm_strequ("aaaa", "aaab"));
-	printf("%d\n", asm_strequ("aaaa", "aaa"));
-	printf("%d\n", asm_strequ("aaaa", "aaaaa"));
-	printf("%d\n", asm_strequ("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaQ", "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
+	printf("%d\n", sse_strcmp("aaaa", "aaaa"));
+	printf("%d\n", sse_strcmp("aaaa", "aaab"));
+	printf("%d\n", sse_strcmp("aaaa", "aaa"));
+	printf("%d\n", sse_strcmp("aaaa", "aaaaa"));
+	printf("%d\n", sse_strcmp("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaQ",
+				"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
 }
 
 #endif

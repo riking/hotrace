@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 10:18:30 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 10:33:34 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 13:01:01 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@
 # include <sys/types.h>
 
 void		sse_memmove(void *dst, void *src, size_t len);
-void		sse_bzero(void *ptr, size_t len);
+int			sse_strcmp(const char *a, const char *b);
 
 #endif

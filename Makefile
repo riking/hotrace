@@ -6,7 +6,7 @@
 #    By: kyork <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/09 19:11:26 by kyork             #+#    #+#              #
-#    Updated: 2017/05/13 13:55:19 by kyork            ###   ########.fr        #
+#    Updated: 2017/05/13 14:24:38 by kyork            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,10 +19,10 @@ COMMONSRC	+= $(addprefix ary/, ft_ary_create.c    ft_ary_get.c      ft_ary_remov
 ft_ary_append.c  ft_ary_destroy.c   ft_ary_grow.c     ft_ary_remove_mul.c  ft_ary_viewof.c \
 ft_ary_clear.c   ft_ary_destroy2.c  ft_ary_insert.c   ft_ary_set.c \
 ft_ary_clone.c   ft_ary_foreach.c   ft_ary_poplast.c  ft_ary_sort.c)
-COMMONSRC	+= $(addprefix lib/, ft_memalloc.c ft_bzero.c)
+COMMONSRC	+= $(addprefix lib/, ft_memalloc.c ft_bzero.c ft_putstr.c get_next_line.c)
 COMMONSRC	+= $(addprefix sse/, sse_memmove.c sse_strcmp.c aligned_strdup.c)
 COMMONSRC	+= key_hash.c main.c read_entries.c make_hash.c do_lookup.c
-COMMONSRC	+= 
+COMMONSRC	+= num_buckets.c cleanup_entries.c
 COMMONSRC	+= 
 COMMONSRC	+= 
 COMMONSRC	+= 

@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_entries.c                                     :+:      :+:    :+:   */
+/*   num_buckets.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/13 13:22:37 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 13:59:41 by kyork            ###   ########.fr       */
+/*   Created: 2017/05/13 14:11:02 by kyork             #+#    #+#             */
+/*   Updated: 2017/05/13 14:15:49 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
-#include <stdlib.h>
 
-int			read_entries(t_race *r)
+int		num_buckets(t_race *r)
 {
-	char		*line;
-	int			status;
-	t_entry		e;
+	size_t	n;
 
-	e.next = 0;
-	while ((status = get_next_line0(&e.key)) == 1)
+	n = r->init_read.item_count;
+	if (n < 16)
 	{
-		if (sse_strcmp(line, "") == 0)
-			break ;
-		if (get_next_line0(&e.value) != 1)
-		{
-			free(e.key);
-			return (1);
-		}
-		ft_ary_append(&r->init_read, &e);
+		r->hash_buckets = 32;
 	}
-	free(e.key);
-	if (status == 0)
-		return (0);
-	return (1);
+	else
+	{
+		n = n * 5 / 4;
+		n |= n >> 1;
+		n |= n >> 2;
+		n |= n >> 4;
+		n |= n >> 8;
+		n |= n >> 16;
+		n |= n >> 32;
+		r->hash_buckets = n + 1;
+	}
+	r->bucket_mask = r->hash_buckets - 1;
+	return (r->hash_buckets);
 }

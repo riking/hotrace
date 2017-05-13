@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 11:36:04 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 13:36:04 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 14:11:12 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ typedef struct	s_race {
 	t_array		hash_table;
 }				t_race;
 
-void			read_entries(t_race *r);
+int				read_entries(t_race *r);
 void			make_hash(t_race *r);
 void			do_lookup(t_race *r);
+void			cleanup_entries(t_race *r);
 
-int				num_buckets(int num_items);
+int				num_buckets(t_race *r);
 uint32_t		key_hash(const char *str);
 char			*lookup(t_race *r, char *key);
 

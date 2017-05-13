@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_entries.c                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/13 13:22:37 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 13:59:41 by kyork            ###   ########.fr       */
+/*   Created: 2016/09/21 11:39:50 by kyork             #+#    #+#             */
+/*   Updated: 2017/05/13 14:09:12 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "hotrace.h"
-#include <stdlib.h>
+#include "lib.h"
+#include <unistd.h>
 
-int			read_entries(t_race *r)
+void	ft_putstr(char const *str)
 {
-	char		*line;
-	int			status;
-	t_entry		e;
+	size_t	len;
 
-	e.next = 0;
-	while ((status = get_next_line0(&e.key)) == 1)
-	{
-		if (sse_strcmp(line, "") == 0)
-			break ;
-		if (get_next_line0(&e.value) != 1)
-		{
-			free(e.key);
-			return (1);
-		}
-		ft_ary_append(&r->init_read, &e);
-	}
-	free(e.key);
-	if (status == 0)
-		return (0);
-	return (1);
+	len = 0;
+	while (str[len++])
+		;
+	write(1, str, len - 1);
 }

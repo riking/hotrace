@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 13:48:28 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 15:03:05 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 15:08:11 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		do_lookup(t_race *r)
 		e = *(t_entry**)ft_ary_get(&r->hash_table, hash);
 		chase_lookup(e, line);
 		free(line);
-		flush_stdout();
 	}
+	flush_stdout();
 	free(line);
 }

@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 11:36:04 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 13:30:45 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 13:36:04 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct	s_entry {
 typedef struct	s_race {
 	t_array		init_read;
 	int			hash_buckets;
+	int			bucket_mask;
 	t_array		hash_table;
 }				t_race;
 

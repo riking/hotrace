@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/24 14:27:54 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 10:21:30 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 13:52:57 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			ft_ary_grow(t_array *ary, size_t min_item_cap)
 	if (ary->ptr)
 		sse_memmove(newptr, ary->ptr, ary->item_size * ary->item_count);
 	free(ary->ptr);
-	sse_bzero(((char*)newptr) + (ary->item_size * ary->item_count),
+	ft_bzero(((char*)newptr) + (ary->item_size * ary->item_count),
 			ary->item_size * (min_item_cap - ary->item_count));
 	ary->ptr = newptr;
 	ary->item_cap = min_item_cap;

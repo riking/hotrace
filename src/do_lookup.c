@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 13:48:28 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 13:52:12 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 14:52:56 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	chase_lookup(t_entry *e, char *key)
 		e = e->next;
 	}
 	ft_putstr(key);
-	ft_putstr(" Not found.\n");
+	ft_putstr(": Not found.\n");
 }
 
 void		do_lookup(t_race *r)

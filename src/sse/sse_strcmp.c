@@ -6,16 +6,15 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 12:48:16 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 13:01:51 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 14:48:55 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str.h"
-#ifdef TEST
-# include <stdio.h>
-#endif
 
-int		sse_strcmp(const char *s1, const char *s2)
+#define RET int __attribute__((noinline))
+
+RET		sse_strcmp(const char *s1, const char *s2)
 {
 	int	result;
 	size_t idx;
@@ -39,17 +38,3 @@ int		sse_strcmp(const char *s1, const char *s2)
 		return (s2[idx] - s1[idx]);
 	return (0);
 }
-
-#ifdef TEST
-
-int main(void)
-{
-	printf("%d\n", sse_strcmp("aaaa", "aaaa"));
-	printf("%d\n", sse_strcmp("aaaa", "aaab"));
-	printf("%d\n", sse_strcmp("aaaa", "aaa"));
-	printf("%d\n", sse_strcmp("aaaa", "aaaaa"));
-	printf("%d\n", sse_strcmp("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaQ",
-				"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"));
-}
-
-#endif

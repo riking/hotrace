@@ -6,7 +6,7 @@
 #    By: kyork <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/09 19:11:26 by kyork             #+#    #+#              #
-#    Updated: 2017/05/13 14:24:38 by kyork            ###   ########.fr        #
+#    Updated: 2017/05/13 14:51:46 by kyork            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,8 +79,7 @@ fclean: clean
 	rm -f $(NAME)
 	@echo "\e[33m\e[1m[FCLEAN]\e[m $$(basename $$(pwd))\n" | tr '\\e' '\e'
 
-re: fclean
-	$(MAKE) all
+re: fclean all
 
 build/%.o: src/%.c
 	@mkdir -p $(@D)

@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 12:34:56 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 14:24:47 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 15:18:59 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,4 +102,20 @@ int				get_next_line0(char **line)
 		s->nl_off = -1;
 	}
 	return (status);
+}
+
+int				gnl_have_buffer(void)
+{
+	t_gnl_fd	*s;
+	char		*c;
+
+	s = &g_fd0;
+	if (!s->chars.ptr || s->nl_off == -1)
+		return (0);
+	c = s->chars.ptr + s->nl_off;
+	while (c < ((char*)s->chars.ptr + s->chars.item_count) && *c != '\n')
+		c++;
+	if (c < ((char*)s->chars.ptr + s->chars.item_count) && *c == '\n')
+		return (1);
+	return (0);
 }

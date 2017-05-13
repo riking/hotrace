@@ -6,14 +6,16 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/21 11:39:50 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 15:02:27 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 15:21:03 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib.h"
 #include <unistd.h>
 
-static char		g_buf[256];
+#define BUF_SIZE 4096
+
+static char		g_buf[BUF_SIZE];
 static int		g_used_buf;
 
 void	ft_putstr(char const *str)
@@ -23,9 +25,9 @@ void	ft_putstr(char const *str)
 	len = 0;
 	while (str[len])
 	{
-		if (g_used_buf == 256)
+		if (g_used_buf == BUF_SIZE)
 		{
-			write(1, g_buf, 256);
+			write(1, g_buf, BUF_SIZE);
 			g_used_buf = 0;
 		}
 		g_buf[g_used_buf++] = str[len++];

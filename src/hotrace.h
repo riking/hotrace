@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hottrace.h                                         :+:      :+:    :+:   */
+/*   hotrace.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 11:36:04 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 12:45:15 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 13:19:21 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HOTRACE_H
 # define HOTRACE_H
 
+# include "ary/ft_ary.h"
 # include "lib/lib.h"
 
 typedef struct	s_readentry {
@@ -38,7 +39,7 @@ void			read_entries(t_race *r);
 void			make_hash(t_race *r);
 void			do_lookup(t_race *r);
 
-uint64_t		key_hash(const char *str);
+uint32_t		key_hash(const char *str);
 char			*lookup(t_race *r, char *key);
 
 

@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 12:34:56 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 15:19:54 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 16:51:46 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 #define GROW_SIZE(s) MAX(GRSZ_A(s), GRSZ_B(s))
 #define MAX(a,b) ((a)>(b)?(a):(b))
 
-static t_gnl_fd	g_fd0 = {0, -1, {0, 1, 0, 1}};
+static t_gnl_fd	g_fd0 = {0, -1, 0, {0, 1, 0, 1}};
 
 ssize_t			gnl_read(t_gnl_fd *s)
 {
@@ -57,11 +57,10 @@ static int		gnl_next(t_gnl_fd *s)
 	char	*c;
 	ssize_t	read_ret;
 
-	if (0 != ft_ary_remove_mul(&s->chars, 0, (size_t)(s->nl_off + 1)))
-		return (-1);
 	while (1)
 	{
-		c = s->chars.ptr;
+		c = ((char*)s->chars.ptr) + s->nl_off + 1;
+		s->nl_start = c - (char*)s->chars.ptr;
 		while (c < ((char*)s->chars.ptr + s->chars.item_count) && *c != '\n')
 			c++;
 		if (c < ((char*)s->chars.ptr + s->chars.item_count) && *c == '\n')
@@ -70,6 +69,9 @@ static int		gnl_next(t_gnl_fd *s)
 			*c = 0;
 			return (1);
 		}
+		if (0 != ft_ary_remove_mul(&s->chars, 0, (size_t)(s->nl_off + 1)))
+			return (-1);
+		s->nl_off = -1;
 		read_ret = gnl_read(s);
 		if (read_ret == -1 || read_ret == 0)
 			return ((int)read_ret);
@@ -91,9 +93,10 @@ int				get_next_line0(char **line)
 		s->nl_off = -1;
 		s->chars = ft_ary_create(sizeof(char));
 	}
+	s->nl_start = 0;
 	status = gnl_next(s);
 	if (status == 1)
-		*line = sse_strdup(s->chars.ptr);
+		*line = sse_strdup(s->nl_start + (char*)s->chars.ptr);
 	else
 	{
 		*line = 0;

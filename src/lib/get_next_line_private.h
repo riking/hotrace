@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 12:34:19 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 15:33:33 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 16:56:23 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef struct		s_gnl_fd {
 	int		fd;
 	ssize_t	nl_off;
+	ssize_t	nl_start;
 	t_array	chars;
 }					t_gnl_fd;
 
@@ -26,7 +27,7 @@ typedef struct		s_gnlstate {
 }					t_gnlstate;
 
 # ifndef BUFF_SIZE
-#  define BUFF_SIZE 512
+#  define BUFF_SIZE 4096
 # endif
 
 extern t_gnlstate	g_bufio_state;

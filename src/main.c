@@ -6,15 +6,11 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 11:35:50 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 14:34:55 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 15:06:51 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
-
-#define norm_error REMOVE THE open/dup2 BEFORE SUBMITTING
-#include <fcntl.h>
-#include <unistd.h>
 
 int		main(int argc, char **argv)
 {
@@ -22,12 +18,6 @@ int		main(int argc, char **argv)
 	int		buckets;
 	int		fd;
 
-	if (argc == 2)
-	{
-		fd = open(argv[1], O_RDONLY);
-		dup2(fd, 0);
-		close(fd);
-	}
 	r.init_read = ft_ary_create(sizeof(t_entry));
 	if (0 == read_entries(&r))
 	{

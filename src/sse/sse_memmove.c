@@ -5,38 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/13 10:30:06 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 10:55:46 by kyork            ###   ########.fr       */
+/*   Created: 2016/09/21 09:29:10 by kyork             #+#    #+#             */
+/*   Updated: 2017/05/13 10:59:11 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "str.h"
-#include <stdio.h>
 
-void		sse_memmove(void *dst, void *src, size_t len)
+static void	ft_memmove_backwards(void *dst, const void *src, size_t length)
 {
-	uint64_t	mask;
+	size_t		t;
+	char		*d;
+	char const	*s;
 
-	mask = -1ULL;
-	__asm__("bzhiq %1, %0, %0;kmovq %0, k1; vmovdqu8 (%2), zmm16{k1}{z}; vmovdqu8 zmm16, (%3){k1}" : "+r" (mask) :
-			"r" (len), "r" (src), "r" (dst) : "memory");
+	d = dst;
+	s = src;
+	s += length;
+	d += length;
+	t = length / 1;
+	while (t > 0)
+	{
+		s -= 1;
+		d -= 1;
+		*d = *s;
+		t--;
+	}
 }
 
-#include <string.h>
-int main(void)
+static void	ft_memmove_forwards(void *dst, const void *src, size_t length)
 {
-	char	buf1[21];
-	char	buf2[21];
+	size_t		t;
+	char		*d;
+	char const	*s;
 
-	memset(buf1, 'A', 20);
-	memset(buf2, 'B', 20);
-	sse_memmove(buf1, buf2, 0);
-	sse_memmove(buf1, buf2, 1);
-	sse_memmove(buf2, buf1, 2);
-	buf2[20] = 0;
-	printf("%s\n", buf2);
-	return 0;
-	sse_memmove(NULL, NULL, 3);
-	sse_memmove(NULL, NULL, 16);
-	sse_memmove(NULL, NULL, 64);
+	d = dst;
+	s = src;
+	t = length / 1;
+	while (t > 0)
+	{
+		*d = *s;
+		s += 1;
+		d += 1;
+		t--;
+	}
+}
+
+void		sse_memmove(void *dst, void *src, size_t length)
+{
+	if (src < dst)
+		ft_memmove_backwards(dst, src, length);
+	else
+		ft_memmove_forwards(dst, src, length);
 }

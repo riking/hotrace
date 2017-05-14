@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 15:25:43 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/14 15:55:27 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/14 16:40:13 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static t_slab	*g_cur_slab;
 
-static void	slab_next(void)
+static void		slab_next(void)
 {
 	void	*ptr;
 	t_slab	*s;
@@ -28,7 +28,7 @@ static void	slab_next(void)
 	g_cur_slab = s;
 }
 
-char		*slab_dup(const char *str)
+char			*slab_dup(const char *str)
 {
 	size_t	len;
 	char	*end;
@@ -44,7 +44,7 @@ char		*slab_dup(const char *str)
 	if (str[len])
 	{
 		slab_next();
-		return sse_strdup(str);
+		return (sse_strdup(str));
 	}
 	*g_cur_slab->cur++ = 0;
 	while (((uintptr_t)g_cur_slab->cur) & (SLAB_ALIGN - 1))

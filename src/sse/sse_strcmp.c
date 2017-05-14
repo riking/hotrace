@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 12:48:16 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 14:48:55 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/14 16:41:24 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 RET		sse_strcmp(const char *s1, const char *s2)
 {
-	int	result;
-	size_t idx;
+	int		result;
+	size_t	idx;
 
 	__asm__("mov $-16, %1\n"
 			"cmploop: add $16, %1\n"

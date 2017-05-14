@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 13:05:22 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/14 15:38:57 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/14 16:14:08 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ uint32_t		key_hash(const char *str)
 	result = 2166136261ULL;
 	while (*s)
 	{
-		result = result * 16777619ULL + *s;
+		result = 16777619ULL * (result ^ *s);
 		s++;
 	}
 	return (mix_hash(result));

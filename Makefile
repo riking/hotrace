@@ -6,14 +6,13 @@
 #    By: kyork <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/10/09 19:11:26 by kyork             #+#    #+#              #
-#    Updated: 2017/05/13 14:51:46 by kyork            ###   ########.fr        #
+#    Updated: 2017/05/13 17:10:19 by kyork            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= hotrace
 
-# change before turning in
-#RELEASE = 1
+RELEASE = 1
 
 COMMONSRC	+= $(addprefix ary/, ft_ary_create.c    ft_ary_get.c      ft_ary_remove.c      ft_ary_swap.c \
 ft_ary_append.c  ft_ary_destroy.c   ft_ary_grow.c     ft_ary_remove_mul.c  ft_ary_viewof.c \

@@ -6,12 +6,14 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 13:22:37 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 17:05:39 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/14 15:49:11 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "hotrace.h"
 #include <stdlib.h>
+
+#define DONT_FREE(x)
 
 int			read_entries(t_race *r)
 {
@@ -25,12 +27,12 @@ int			read_entries(t_race *r)
 			break ;
 		if (get_next_line0(&e.value, 0) != 1)
 		{
-			free(e.key);
+			DONT_FREE(e.key);
 			return (1);
 		}
 		ft_ary_append(&r->init_read, &e);
 	}
-	free(e.key);
+	DONT_FREE(e.key);
 	if (status == 1)
 		return (0);
 	return (1);

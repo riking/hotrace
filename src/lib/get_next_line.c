@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 12:34:56 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 17:04:38 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/14 15:45:47 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int				get_next_line0(char **line, int mode)
 	if (status == 1 && mode == GNL_NODUP)
 		*line = s->nl_start + (char*)s->chars.ptr;
 	else if (status == 1)
-		*line = sse_strdup(s->nl_start + (char*)s->chars.ptr);
+		*line = slab_dup(s->nl_start + (char*)s->chars.ptr);
 	else
 	{
 		*line = 0;

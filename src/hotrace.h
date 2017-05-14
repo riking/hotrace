@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 11:36:04 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 14:11:12 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 17:06:06 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,5 @@ void			cleanup_entries(t_race *r);
 int				num_buckets(t_race *r);
 uint32_t		key_hash(const char *str);
 char			*lookup(t_race *r, char *key);
-
-int				get_next_line0(char **line);
 
 #endif

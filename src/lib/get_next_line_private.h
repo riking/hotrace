@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 12:34:19 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 16:56:23 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 17:05:54 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct		s_gnlstate {
 
 extern t_gnlstate	g_bufio_state;
 
-int					get_next_line0(char **line);
+int					get_next_line0(char **line, int mode);
 
 t_gnl_fd			*gnl_setup(void);
 ssize_t				gnl_read(t_gnl_fd *s);

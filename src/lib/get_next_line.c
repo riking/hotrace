@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/26 12:34:56 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 16:51:46 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 17:04:38 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,29 +80,27 @@ static int		gnl_next(t_gnl_fd *s)
 	}
 }
 
-int				get_next_line0(char **line)
+int				get_next_line0(char **line, int mode)
 {
 	t_gnl_fd	*s;
 	int			status;
 
-	if (!line)
-		return (-1);
 	s = &g_fd0;
 	if (!s->chars.ptr)
 	{
 		s->nl_off = -1;
 		s->chars = ft_ary_create(sizeof(char));
 	}
-	s->nl_start = 0;
 	status = gnl_next(s);
-	if (status == 1)
+	if (status == 1 && mode == GNL_NODUP)
+		*line = s->nl_start + (char*)s->chars.ptr;
+	else if (status == 1)
 		*line = sse_strdup(s->nl_start + (char*)s->chars.ptr);
 	else
 	{
 		*line = 0;
 		ft_ary_destroy(&(s->chars));
 		s->chars.ptr = 0;
-		s->nl_off = -1;
 	}
 	return (status);
 }

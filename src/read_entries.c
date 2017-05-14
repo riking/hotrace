@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 13:22:37 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 16:29:33 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 17:05:39 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int			read_entries(t_race *r)
 	t_entry		e;
 
 	e.next = 0;
-	while ((status = get_next_line0(&e.key)) == 1)
+	while ((status = get_next_line0(&e.key, 0)) == 1)
 	{
 		if (sse_strcmp(e.key, "") == 0)
 			break ;
-		if (get_next_line0(&e.value) != 1)
+		if (get_next_line0(&e.value, 0) != 1)
 		{
 			free(e.key);
 			return (1);

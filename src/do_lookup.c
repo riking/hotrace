@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/13 13:48:28 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/13 15:19:17 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/13 17:05:15 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,13 @@ void		do_lookup(t_race *r)
 	uint32_t	hash;
 	t_entry		*e;
 
-	while ((status = get_next_line0(&line)) == 1)
+	while ((status = get_next_line0(&line, GNL_NODUP)) == 1)
 	{
 		hash = key_hash(line) & r->bucket_mask;
 		e = *(t_entry**)ft_ary_get(&r->hash_table, hash);
 		chase_lookup(e, line);
-		free(line);
 		if (!gnl_have_buffer())
 			flush_stdout();
 	}
 	flush_stdout();
-	free(line);
 }

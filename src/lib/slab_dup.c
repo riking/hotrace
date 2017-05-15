@@ -6,7 +6,7 @@
 /*   By: kyork <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/14 15:25:43 by kyork             #+#    #+#             */
-/*   Updated: 2017/05/14 16:40:13 by kyork            ###   ########.fr       */
+/*   Updated: 2017/05/14 18:24:43 by kyork            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char			*slab_dup(const char *str)
 	if (!g_cur_slab)
 		slab_next();
 	len = 0;
-	end = ((char*)g_cur_slab) + SLAB_SIZE - (SLAB_ALIGN * 3);
+	end = ((char*)g_cur_slab) + SLAB_SIZE - 24;
 	start = g_cur_slab->cur;
 	while (str[len] && (g_cur_slab->cur < end))
 		*g_cur_slab->cur++ = str[len++];
